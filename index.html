@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sand Software Solutions apt repository</title>
+<style>
+  :root { color-scheme: light dark; font: 16px/1.55 system-ui, sans-serif; }
+  body { max-width: 46rem; margin: 2.5rem auto; padding: 0 1rem; }
+  pre { overflow-x: auto; padding: 1rem; border-radius: 6px; background: #8881; }
+  code { font-family: ui-monospace, monospace; }
+  h1 { margin-bottom: .25rem; }
+</style>
+</head>
+<body>
+<h1>apt repository</h1>
+<p>Packages from <a href="https://sandsoftwaresolutions.com">Sand Software Solutions</a> for Debian, Ubuntu and
+derivatives (amd64 and arm64):</p>
+<ul>
+  <li><strong>foundry</strong>: create new projects from your own templates.
+    <a href="https://github.com/SandSoftwareSolutions/Foundry">GitHub</a></li>
+  <li><strong>assay</strong>: see whether files were changed.
+    <a href="https://github.com/SandSoftwareSolutions/assay">GitHub</a></li>
+</ul>
+
+<h2>Install</h2>
+<pre><code>sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://sandsoftwaresolutions.github.io/apt/key.asc | sudo tee /etc/apt/keyrings/sandsoftwaresolutions.asc &gt;/dev/null
+echo "deb [signed-by=/etc/apt/keyrings/sandsoftwaresolutions.asc] https://sandsoftwaresolutions.github.io/apt stable main" | sudo tee /etc/apt/sources.list.d/sandsoftwaresolutions.list
+sudo apt update
+sudo apt install foundry assay</code></pre>
+<p>Updates arrive with your normal <code>sudo apt upgrade</code>.</p>
+
+<h2>Remove</h2>
+<pre><code>sudo apt remove foundry assay
+sudo rm /etc/apt/sources.list.d/sandsoftwaresolutions.list /etc/apt/keyrings/sandsoftwaresolutions.asc</code></pre>
+
+<h2>About the signature</h2>
+<p>The repository is signed with a dedicated key; the public key is <a href="key.asc">key.asc</a>. The
+<code>signed-by</code> option above limits that key to this repository only. Packages are built by
+GitHub Actions from tagged releases; each release also carries a <code>SHA256SUMS</code> file.</p>
+</body>
+</html>
