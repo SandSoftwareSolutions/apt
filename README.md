@@ -1,6 +1,15 @@
 # apt repository for Sand Software Solutions
 
-Install **foundry** and **assay** with `apt` on Debian, Ubuntu and derivatives (amd64, arm64):
+Install **foundry** and **assay** with `apt` on Debian, Ubuntu and derivatives (amd64, arm64).
+
+One line (it adds the signing key and the source and installs nothing; [read it first](setup.sh)):
+
+```console
+curl -fsSL https://sandsoftwaresolutions.github.io/apt/setup.sh | sudo sh
+sudo apt install foundry assay
+```
+
+Or by hand:
 
 ```console
 sudo install -d -m 0755 /etc/apt/keyrings
@@ -17,6 +26,12 @@ A GitHub Actions workflow (`Update repository`) runs every six hours and on dema
 indexes with `dpkg-scanpackages` and `apt-ftparchive`, signs the `Release` file and publishes the result
 with GitHub Pages. To add a package, add its repository to `sources.txt` (its releases must carry `.deb`
 files).
+
+## Remove
+
+```console
+curl -fsSL https://sandsoftwaresolutions.github.io/apt/setup.sh | sudo sh -s -- --remove
+```
 
 ## The signing key
 

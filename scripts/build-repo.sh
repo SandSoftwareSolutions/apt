@@ -69,6 +69,7 @@ gpg_sign=(gpg --batch --yes --pinentry-mode loopback --default-key "$GPG_KEY_ID"
 # 5. Public key and the page that explains how to use the repository.
 gpg --batch --armor --export "$GPG_KEY_ID" > "$SITE/key.asc"
 cp "$ROOT/index.html" "$SITE/index.html"
+cp "$ROOT/setup.sh" "$SITE/setup.sh"
 touch "$SITE/.nojekyll"
 
 echo "Repository built in $SITE:"
